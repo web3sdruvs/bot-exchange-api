@@ -1,2 +1,2 @@
 # bot-exchange-api
-This repository was created with the intention of centralizing examples for interacting with exchange APIs
+This repository was created with the purpose of aggregating examples for interacting with cryptocurrency exchange APIs. All actions related to investments are the sole responsibility of the investor. Before making investment decisions, it is essential to carefully evaluate financial goals, risk tolerance, and seek guidance from a financial professional if necessary. Investments carry risks, and past results do not guarantee future outcomes.
