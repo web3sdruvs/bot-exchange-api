@@ -4,7 +4,11 @@ import re
 
 re_default = r'[^a-zA-Z0-9\s]'
 
-#request withdraw
+'''
+To utilize the withdrawal function, you need to set up the API with your public IP and configure 
+the sending address along with the address tag on the exchange (you can find this in the withdrawal 
+step on the exchange, next to the Address field, next the list icon)
+'''
 def request_withdraw(symbol, network, address, addressTag, qty):
     payload = {}
     path = '/openApi/wallets/v1/capital/withdraw/apply'
