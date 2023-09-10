@@ -15,6 +15,7 @@ def create_order(symbol, quantity):
     'type': 'MARKET', #MARKET/LIMIT
     'timeInForce': 'IOC', #IOC = immediate-or-cancel , POC = process-or-cancel
     'quoteOrderQty': quantity,
+    "price": 80000,
     'recvWindow': 0
     }
     paramsStr = credential.praseParam(paramsMap)
