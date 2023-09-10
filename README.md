@@ -21,3 +21,8 @@ Bitcoin address:
 ```bash
 bc1qjgz6y7sh2rw5fl55432rr6n6vs9hrhhhsn2eft
 ```
+
+# License and Credits
+You may copy, distribute and modify the software provided that modifications are described and licensed for free. 
+
+[Bingx](https://bingx.com/) API written by Bingx, built from https://github.com/BingX-API, is used in this project.
