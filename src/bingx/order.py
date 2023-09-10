@@ -5,17 +5,17 @@ import re
 re_default = r'[^a-zA-Z0-9\s]'
 
 #create an order
-def create_order(symbol, quantity):
+def create_order(symbol, side, type, timeInForce, quoteOrderQty,price):
     payload = {}
     path = '/openApi/spot/v1/trade/order'
     method = 'POST'
     paramsMap = {
-    'symbol': symbol+'-USDT',
-    'side': 'BUY', #BUY/SELL
-    'type': 'MARKET', #MARKET/LIMIT
-    'timeInForce': 'IOC', #IOC = immediate-or-cancel , POC = process-or-cancel
-    'quoteOrderQty': quantity,
-    "price": 80000, #Price is not a mandatory field. If you want to buy at market price, you can exclude the price item from the function
+    'symbol': symbol,
+    'side': side, #BUY/SELL
+    'type': type, #MARKET/LIMIT
+    'timeInForce': timeInForce, #IOC = immediate-or-cancel , POC = process-or-cancel
+    'quoteOrderQty': quoteOrderQty,
+    "price": price, #Price is not a mandatory field. If you want to buy at market price, you can exclude the price item from the function
     'recvWindow': 0
     }
     paramsStr = credential.praseParam(paramsMap)
@@ -39,7 +39,7 @@ def cancel_order(symbol, orderId):
     path = '/openApi/spot/v1/trade/cancel'
     method = 'POST'
     paramsMap = {
-    'symbol': symbol +'-USDT',
+    'symbol': symbol,
     'orderId': orderId,
     'recvWindow': 0
     }
