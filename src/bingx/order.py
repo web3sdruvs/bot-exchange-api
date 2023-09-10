@@ -5,7 +5,7 @@ import re
 re_default = r'[^a-zA-Z0-9\s]'
 
 #create an order
-def create_order(symbol, side, type, timeInForce, quoteOrderQty, price):
+def create(symbol, side, type, timeInForce, quoteOrderQty, price):
     payload = {}
     path = '/openApi/spot/v1/trade/order'
     method = 'POST'
@@ -34,7 +34,7 @@ def create_order(symbol, side, type, timeInForce, quoteOrderQty, price):
         return error
 
 #cancel an order
-def cancel_order(symbol, orderId):
+def cancel(symbol, orderId):
     payload = {}
     path = '/openApi/spot/v1/trade/cancel'
     method = 'POST'

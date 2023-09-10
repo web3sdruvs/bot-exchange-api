@@ -9,7 +9,7 @@ To utilize the withdrawal function, you need to set up the API with your public 
 the sending address along with the address tag on the exchange (you can find this in the withdrawal 
 step on the exchange, next to the Address field, next the list icon)
 '''
-def request_withdraw(symbol, network, address, addressTag, qty):
+def withdraw(symbol, network, address, addressTag, qty):
     payload = {}
     path = '/openApi/wallets/v1/capital/withdraw/apply'
     method = 'POST'

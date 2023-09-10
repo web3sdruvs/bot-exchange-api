@@ -4,7 +4,7 @@ import re
 
 re_default = r'[^a-zA-Z0-9\s]'
 
-def get_balance(symbol):
+def balance(symbol):
     payload = {}
     path = '/openApi/spot/v1/account/balance'
     method = 'GET'
