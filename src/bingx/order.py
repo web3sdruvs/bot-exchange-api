@@ -15,7 +15,7 @@ def create_order(symbol, quantity):
     'type': 'MARKET', #MARKET/LIMIT
     'timeInForce': 'IOC', #IOC = immediate-or-cancel , POC = process-or-cancel
     'quoteOrderQty': quantity,
-    "price": 80000,
+    "price": 80000, #Price is not a mandatory field. If you want to buy at market price, you can exclude the price item from the function
     'recvWindow': 0
     }
     paramsStr = credential.praseParam(paramsMap)
