@@ -4,9 +4,9 @@ import hmac
 from hashlib import sha256
 
 #when creating an API, remember to configure only your access IP for security reasons and also to enable other features such as withdrawals.
-APIURL_BINGX = "https://open-api.bingx.com"
-APIKEY_BINGX = "YOUR API KEY"
-SECRETKEY_BINGX = "YOUR SECRET KEY"
+APIURL_BINGX = 'https://open-api.bingx.com'
+APIKEY_BINGX = 'YOUR API KEY'
+SECRETKEY_BINGX = 'YOUR SECRET KEY'
 
 #get sign request secretkey to generate a signature
 def get_sign(api_secret, payload):
