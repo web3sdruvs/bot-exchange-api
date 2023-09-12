@@ -6,6 +6,12 @@ import json
 import re
 
 re_default = r'[^a-zA-Z0-9\s]' 
+
+'''
+This function will return a JSON with Candlestick chart data including 
+pen time, max price, min price, close price, filled price, candlestick 
+chart close time, and volume
+'''
 def candles(symbol,interval,limit):
     current_datetime = datetime.now()
     resultant_date = current_datetime - timedelta(days=limit)
