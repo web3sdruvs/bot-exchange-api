@@ -53,7 +53,7 @@ def rsi(symbol,limit):
       daily_change = [closing[i] - opening[i] for i in range(len(opening))]
       positive_change = [max(0, change) for change in daily_change]
       negative_change = [-min(0, change) for change in daily_change]
-      period = 14
+      period = limit
       moving_average_gains = [np.mean(positive_change[:period])]
       moving_average_losses = [np.mean(negative_change[:period])]
 
