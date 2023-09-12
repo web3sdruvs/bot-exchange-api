@@ -3,6 +3,10 @@ import withdraw
 import order
 import candles
 
+'''
+The data used to call the functions within the modules 
+are examples and should be edited according to your needs.
+'''
 def get_balance():
     balance.balance('BTC') #(symbol)
 
@@ -17,3 +21,6 @@ def cancel_order():
 ''
 def get_candles():
     candles.candles('BTC-USDT','1d',14) #(symbol,interval,limit) 
+
+def get_rsi():
+    candles.rsi('BTC-USDT',14) #(symbol,limit) 

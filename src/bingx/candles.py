@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import numpy as np
 import time
 import credential
 import json
@@ -30,3 +31,43 @@ def candles(symbol,interval,limit):
         error = json_data['msg']
         error = re.sub(re_default, ' ', str(error))
         return error
+    
+'''
+With the result of the candles function, it is possible to perform various types of 
+calculations, such as moving averages, averages, and also calculate the RSI as shown 
+in the function below.
+'''
+def rsi(symbol,limit):
+    json_data = candles(symbol,'1d',limit)
+
+    if 'data' in json_data:
+      opening = []
+      closing = []
+
+      for i in json_data['data']:
+          open = float(i[1])
+          closed = float(i[4])
+          opening.append(open)
+          closing.append(closed)
+                 
+      daily_change = [closing[i] - opening[i] for i in range(len(opening))]
+      positive_change = [max(0, change) for change in daily_change]
+      negative_change = [-min(0, change) for change in daily_change]
+      period = 14
+      moving_average_gains = [np.mean(positive_change[:period])]
+      moving_average_losses = [np.mean(negative_change[:period])]
+
+      for i in range(period, len(daily_change)):
+          gain = positive_change[i]
+          loss = negative_change[i]
+          
+          moving_average_gains.append(((period - 1) * moving_average_gains[-1] + gain) / period)
+          moving_average_losses.append(((period - 1) * moving_average_losses[-1] + loss) / period)
+
+      rs = [moving_average_gains[i] / moving_average_losses[i] for i in range(len(moving_average_gains))]
+      rsi = [100 - (100 / (1 + rs_value)) for rs_value in rs]
+      rsi = rsi[0]
+      return rsi  
+    else:
+        error = json_data['msg']
+        error = re.sub(re_default, ' ', str(error))
