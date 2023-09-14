@@ -5,7 +5,7 @@ This repository was created with the purpose of aggregating examples for interac
 Here are the forecast updates listed:
 
 - [Bingx](https://github.com/web3sdruvs/bot-exchange-api/tree/main/src/bingx) (Done) ✅ 
-- [Bybit](https://github.com/web3sdruvs/bot-exchange-api/tree/main/src/bybit) (Not started) 🟡
+- [Bybit](https://github.com/web3sdruvs/bot-exchange-api/tree/main/src/bybit) (In development) 🕔
 - [Binance](https://github.com/web3sdruvs/bot-exchange-api/tree/main/src/binance) (Not started) 🟡
 - [Gateio](https://github.com/web3sdruvs/bot-exchange-api/tree/main/src/gateio)  (Not started) 🟡
 
