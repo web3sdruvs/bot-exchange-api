@@ -10,6 +10,9 @@ are examples and should be edited according to your needs.
 def get_balance():
     balance.balance('BTC') #(symbol)
 
+def get_withdraw_fee():
+    withdraw.withdrawfee("BTC", "BTC") #(symbol, network)
+
 def request_withdraw():
     withdraw.withdraw('BTC', 'Bitcoin', '0x00001', 'coldwallet', 1, 1) #(symbol, network, address, addressTag, qty, walletType)
 

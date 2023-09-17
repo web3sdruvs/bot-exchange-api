@@ -31,3 +31,26 @@ def withdraw(symbol, network, address, addressTag, qty, walletType):
         error = json_data['msg']
         error = re.sub(re_default, ' ', str(error))
         return  error
+
+def withdrawfee(symbol, network):
+    payload = {}
+    path = '/openApi/wallets/v1/capital/config/getall'
+    method = "GET"
+    paramsMap = {
+    "recvWindow": 0
+}
+    paramsStr = credential.praseParam(paramsMap)
+    json_data = json.loads(credential.send_request(method, path, paramsStr, payload))
+
+    if 'data' in json_data:  
+      json_data = json_data['data']
+      for i in json_data:
+        network_list = i.get("networkList", [])
+        for fee  in network_list:
+          if fee.get("name") == symbol and fee.get("network") == network:
+            network_fee = fee['withdrawFee']
+      return network_fee
+    else: 
+        error = json_data['msg']
+        error = re.sub(re_default, ' ', str(error))
+        return error
