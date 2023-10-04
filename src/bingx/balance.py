@@ -8,11 +8,11 @@ def balance(symbol):
     payload = {}
     path = '/openApi/spot/v1/account/balance'
     method = 'GET'
-    paramsMap = {
+    params_map = {
     'recvWindow': 0
     }
-    paramsStr = credential.praseParam(paramsMap)
-    json_data = json.loads(credential.send_request(method, path, paramsStr, payload))
+    params_str = credential.praseParam(params_map)
+    json_data = json.loads(credential.send_request(method, path, params_str, payload))
 
     if 'data' in json_data:    
         for balance in json_data['data']['balances']:

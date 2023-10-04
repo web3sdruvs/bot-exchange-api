@@ -23,7 +23,7 @@ def send_request(method, path, urlpa, payload):
     return response.text
 
 #parameter encapsulation
-def praseParam(paramsMap):
-    sortedKeys = sorted(paramsMap)
-    paramsStr = '&'.join(['%s=%s' % (x, paramsMap[x]) for x in sortedKeys])
-    return paramsStr+'&timestamp='+str(int(time.time() * 1000))
+def praseParam(params_map):
+    sortedKeys = sorted(params_map)
+    params_str = '&'.join(['%s=%s' % (x, params_map[x]) for x in sortedKeys])
+    return params_str+'&timestamp='+str(int(time.time() * 1000))

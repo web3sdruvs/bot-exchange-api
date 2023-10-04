@@ -9,7 +9,7 @@ def create(symbol, side, type, timeInForce, quoteOrderQty, price):
     payload = {}
     path = '/openApi/spot/v1/trade/order'
     method = 'POST'
-    paramsMap = {
+    params_map = {
     'symbol': symbol,
     'side': side, #BUY/SELL
     'type': type, #MARKET/LIMIT
@@ -18,8 +18,8 @@ def create(symbol, side, type, timeInForce, quoteOrderQty, price):
     "price": price, #Price is not a mandatory field. If you want to buy at market price, you can exclude the price item from the function
     'recvWindow': 0
     }
-    paramsStr = credential.praseParam(paramsMap)
-    json_data = json.loads(credential.send_request(method, path, paramsStr, payload))
+    params_str = credential.praseParam(params_map)
+    json_data = json.loads(credential.send_request(method, path, params_str, payload))
 
     if 'data' in json_data:
         orderId = json_data['data']['orderId']
@@ -38,13 +38,13 @@ def cancel(symbol, orderId):
     payload = {}
     path = '/openApi/spot/v1/trade/cancel'
     method = 'POST'
-    paramsMap = {
+    params_map = {
     'symbol': symbol,
     'orderId': orderId,
     'recvWindow': 0
     }
-    paramsStr = credential.praseParam(paramsMap)
-    json_data = json.loads(credential.send_request(method, path, paramsStr, payload))
+    params_str = credential.praseParam(params_map)
+    json_data = json.loads(credential.send_request(method, path, params_str, payload))
     
     if 'data' in json_data:
         clientOrderID = json_data['data']['clientOrderID']

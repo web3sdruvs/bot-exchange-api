@@ -13,7 +13,7 @@ def withdraw(symbol, network, address, addressTag, qty, walletType):
     payload = {}
     path = '/openApi/wallets/v1/capital/withdraw/apply'
     method = 'POST'
-    paramsMap = {
+    params_map = {
     'coin': symbol,
     'network': network,
     'address': address,
@@ -21,8 +21,8 @@ def withdraw(symbol, network, address, addressTag, qty, walletType):
     'amount': qty,
     'walletType': walletType # 1 = fund account | 2 = standard account | 3 = perpetual account
     }
-    paramsStr = credential.praseParam(paramsMap)
-    json_data = json.loads(credential.send_request(method, path, paramsStr, payload))
+    params_str = credential.praseParam(params_map)
+    json_data = json.loads(credential.send_request(method, path, params_str, payload))
 
     if 'data' in json_data:  
         id = json_data['data']['id']
@@ -36,11 +36,11 @@ def withdrawfee(symbol, network):
     payload = {}
     path = '/openApi/wallets/v1/capital/config/getall'
     method = "GET"
-    paramsMap = {
+    params_map = {
     "recvWindow": 0
 }
-    paramsStr = credential.praseParam(paramsMap)
-    json_data = json.loads(credential.send_request(method, path, paramsStr, payload))
+    params_str = credential.praseParam(params_map)
+    json_data = json.loads(credential.send_request(method, path, params_str, payload))
 
     if 'data' in json_data:  
       json_data = json_data['data']

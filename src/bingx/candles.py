@@ -21,15 +21,15 @@ def candles(symbol,interval,limit):
     payload = {}
     path = '/openApi/spot/v1/market/kline'
     method = 'GET'
-    paramsMap = {
+    params_map = {
     'symbol': symbol,
     'interval': interval, #(3m, 5m, 10m  = minute |  1h, 2h, 4h = hour | 1d, 3d, 8d = day | 1w, 2w, 8w = week | 1M, 2M, 6M = month)
     'startTime': start_epoch_timestamp,
     'endTime': end_epoch_timestamp,
     'limit' : limit #qty limit inverval
     }  
-    paramsStr = credential.praseParam(paramsMap)
-    json_data = json.loads(credential.send_request(method, path, paramsStr, payload))
+    params_str = credential.praseParam(params_map)
+    json_data = json.loads(credential.send_request(method, path, params_str, payload))
 
     if 'data' in json_data:
         return json_data  
