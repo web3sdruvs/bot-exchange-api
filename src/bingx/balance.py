@@ -5,6 +5,16 @@ import re
 re_default = r'[^a-zA-Z0-9\s]'
 
 def balance(symbol):
+    """
+    Get the balance of a specific cryptocurrency symbol from the spot trading account.
+
+    Parameters:
+    - symbol (str): The cryptocurrency symbol (e.g., 'BTC', 'ETH').
+
+    Returns:
+    - float: The balance of the specified cryptocurrency symbol.
+    - str: If an error occurs, return the error message.
+    """
     payload = {}
     path = '/openApi/spot/v1/account/balance'
     method = 'GET'
