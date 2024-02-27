@@ -13,6 +13,20 @@ pen time, max price, min price, close price, filled price, candlestick
 chart close time, and volume
 '''
 def candles(symbol,interval,limit):
+    """
+    Retrieve historical candlestick (kline) data for a given trading pair.
+
+    Parameters:
+    - symbol (str): The cryptocurrency symbol (e.g., 'BTC', 'ETH').
+    - interval (str): The time interval for each candlestick (e.g., '1h', '4h', '1d').
+    - limit (int): The quantity limit of candlesticks to retrieve.
+
+    Returns:
+    - dict: If successful, returns a dictionary containing candlestick data.
+      The 'data' key contains a list of dictionaries, where each dictionary represents a candlestick.
+
+    - str: If unsuccessful, returns an error message.
+    """
     current_datetime = datetime.now()
     resultant_date = current_datetime - timedelta(days=limit)
     desired_time = datetime(resultant_date.year, resultant_date.month, resultant_date.day, 15, 59, 59)
@@ -44,6 +58,19 @@ calculations, such as moving averages, averages, and also calculate the RSI as s
 in the function below.
 '''
 def rsi(symbol,limit):
+    """
+    Calculate the Relative Strength Index (RSI) for a given trading pair.
+
+    Parameters:
+    - symbol (str): The cryptocurrency symbol (e.g., 'BTC', 'ETH').
+    - limit (int): The quantity limit of historical data to calculate RSI.
+
+    Returns:
+    - float: If successful, returns the RSI (Relative Strength Index) value.
+      RSI is a momentum oscillator that measures the speed and change of price movements.
+      The value ranges from 0 to 100, where values above 70 indicate overbought conditions,
+      and values below 30 indicate oversold conditions.
+    """
     json_data = candles(symbol,'1d',limit)
 
     if 'data' in json_data:
