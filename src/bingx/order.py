@@ -6,6 +6,27 @@ re_default = r'[^a-zA-Z0-9\s]'
 
 #create an order
 def create(symbol, side, type, timeInForce, quoteOrderQty, price):
+    """
+    Create a new trade order in the spot market.
+
+    Parameters:
+    - symbol (str): The cryptocurrency symbol (e.g., 'BTC', 'ETH').
+    - side (str): The order side, either 'BUY' or 'SELL'.
+    - type (str): The order type, either 'MARKET' or 'LIMIT'.
+    - timeInForce (str): The time in force for the order, options are 'IOC' (immediate-or-cancel) or 'POC' (process-or-cancel).
+    - quoteOrderQty (float): The quote order quantity.
+    - price (float, optional): The limit price for a 'LIMIT' order. If not provided, a 'MARKET' order is placed.
+
+    Returns:
+    - tuple: If successful, returns a tuple containing orderId, priceOrder, qty, total, and status.
+        - orderId (int): The unique identifier for the order.
+        - priceOrder (float): The price at which the order was executed.
+        - qty (float): The executed quantity of the order.
+        - total (float): The total value of the order (qty * priceOrder).
+        - status (str): The status of the order (e.g., 'filled', 'partially-filled', 'rejected').
+
+    - str: If unsuccessful, returns an error message.
+    """
     payload = {}
     path = '/openApi/spot/v1/trade/order'
     method = 'POST'
@@ -35,6 +56,17 @@ def create(symbol, side, type, timeInForce, quoteOrderQty, price):
 
 #cancel an order
 def cancel(symbol, orderId):
+    """
+    Cancel a specific order for a given cryptocurrency symbol.
+
+    Parameters:
+    - symbol (str): The cryptocurrency symbol (e.g., 'BTC', 'ETH').
+    - orderId (int): The ID of the order to be canceled.
+
+    Returns:
+    - int: If successful, returns the client order ID of the canceled order.
+    - str: If an error occurs, returns the error message.
+    """
     payload = {}
     path = '/openApi/spot/v1/trade/cancel'
     method = 'POST'
