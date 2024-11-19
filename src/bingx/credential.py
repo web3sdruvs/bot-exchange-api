@@ -4,9 +4,12 @@ import hmac
 from hashlib import sha256
 
 #when creating an API, remember to configure only your access IP for security reasons and also to enable other features such as withdrawals.
+#warning: This code is for example purposes only and should not be used in production.
+#storing credentials directly in the code is not secure and can expose sensitive information.
+#in real environments, use environment variables or a secrets manager to protect your credentials.
 APIURL_BINGX = 'https://open-api.bingx.com'
-APIKEY_BINGX = 'YOUR API KEY'
-SECRETKEY_BINGX = 'YOUR SECRET KEY'
+APIKEY_BINGX = 'YOUR API KEY' #example only, do not hardcode in production
+SECRETKEY_BINGX = 'YOUR SECRET KEY' #example only, do not hardcode in production
 
 def get_sign(api_secret, payload):
     """
