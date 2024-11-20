@@ -1,3 +1,4 @@
+import time
 import requests
 import hmac
 from hashlib import sha256
@@ -25,3 +26,37 @@ def get_sign(api_secret, payload):
     """
     signature = hmac.new(api_secret.encode('utf-8'), payload.encode('utf-8'), digestmod=sha256).hexdigest()
     return signature
+
+def send_request(method, path, params, payload):
+    """
+    Makes a call to the Bybit API.
+
+    Parameters:
+    - method (str): HTTP method (e.g., 'GET', 'POST').
+    - path (str): API endpoint path.
+    - params (dict): URL parameters.
+    - payload (str): Request data (JSON).
+    - info (str): Additional information for logging.
+
+    Returns:
+    - str: Content of the API response.
+    """
+    timestamp = str(int(time.time() * 1000))
+    signature = get_sign(SECRETKEY, params)
+
+    headers = {
+        'X-BAPI-API-KEY': APIKEY,
+        'X-BAPI-SIGN': signature,
+        'X-BAPI-SIGN-TYPE': '2',
+        'X-BAPI-TIMESTAMP': timestamp,
+        'X-BAPI-RECV-WINDOW': RECV_WINDOW,
+        'Content-Type': 'application/json'
+    }
+    url = f"{APIURL}{path}?{params}&signature={signature}"
+
+    try:
+        response = requests.request(method, url, headers=headers, data=payload)
+        response.raise_for_status()  # Checks for HTTP errors
+        return response.text
+    except requests.exceptions.RequestException as e:
+        return None
