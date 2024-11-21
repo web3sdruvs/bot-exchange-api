@@ -42,7 +42,8 @@ def send_request(method, path, params, payload):
     - str: Content of the API response.
     """
     timestamp = str(int(time.time() * 1000))
-    signature = get_sign(SECRETKEY, params)
+    urlpa = praseParam(params, timestamp)
+    signature = get_sign(SECRETKEY, urlpa)
 
     headers = {
         'X-BAPI-API-KEY': APIKEY,
@@ -52,7 +53,7 @@ def send_request(method, path, params, payload):
         'X-BAPI-RECV-WINDOW': RECV_WINDOW,
         'Content-Type': 'application/json'
     }
-    url = f"{APIURL}{path}?{params}&signature={signature}"
+    url = f"{APIURL}{path}?{urlpa}&signature={signature}"
 
     try:
         response = requests.request(method, url, headers=headers, data=payload)
@@ -60,3 +61,18 @@ def send_request(method, path, params, payload):
         return response.text
     except requests.exceptions.RequestException as e:
         return None
+
+def praseParam(params_map, timestamp):
+    """
+    Organizes and adds the timestamp to request parameters.
+
+    Parameters:
+    - params_map (dict): Dictionary with request parameters.
+    - timestamp (str): Current request timestamp.
+
+    Returns:
+    - str: Formatted string of parameters with timestamp added.
+    """
+    sorted_keys = sorted(params_map)
+    params_str = '&'.join(f"{key}={params_map[key]}" for key in sorted_keys)
+    return f"{params_str}&timestamp={timestamp}&recv_window={RECV_WINDOW}"
