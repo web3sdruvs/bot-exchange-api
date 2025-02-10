@@ -9,6 +9,21 @@ Here are the forecast updates listed:
 - [Binance](https://github.com/web3sdruvs/bot-exchange-api/tree/main/src/binance) (Not started) 🟡
 - [Gateio](https://github.com/web3sdruvs/bot-exchange-api/tree/main/src/gateio)  (Not started) 🟡
 
+# Setup Up the Development Environment
+To ensure a consistent development environment across all systems, follow these steps to set up a virtual environment and install dependencies.
+
+### Windows
+1. Open **Command Prompt** (`cmd`) or **PowerShell**.  
+2. Run the setup script:  
+   ```cmd
+   setup.bat
+   ```
+### Linux
+1. Open a terminal.  
+2. Run the setup script:  
+   ```bash
+   ./setup.sh
+
 # Donations
 If this repository helps you in your development or if you would like to support this development, you can give me a cup of coffee. ☕
 
