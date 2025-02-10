@@ -1,27 +1,52 @@
-.DS_Store
-tools/dist/
-tools/xtensa-lx106-elf/
-tools/mkspiffs/
-tools/mklittlefs/
-tools/python3/
-package/versions/
-exclude.txt
+# Bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
 
-tests/hosts/lcov/
+# Data files
+*.csv
+*.xlsx
+*.parquet
+*.png
+*.pbix
+*.pq
 
-*.pyc
-*.gch
+# Virtual environments
+venv/
+env/
+*.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE configuration files
+.idea/
+.vscode/
+*.swp
+
+# Logs and dumps
+logs/
+*.log
+*.out
+*.pid
+*.seed
+*.cover
+
+# Dependencies
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
 *.ini
+*.cfg
+*.toml
 
-*.gcov
-*.gcno
-*.gcda
-*.o
-*.a
+# Jupyter Notebook
+.ipynb_checkpoints/
 
-#Ignore files built by Visual Studio/Visual Micro
-[Dd]ebug*/
-[Rr]elease*/
-.vs/
-__vm/
-*.vcxproj*
+# Temporary files
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
